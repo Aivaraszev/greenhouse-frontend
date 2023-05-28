@@ -1,7 +1,7 @@
-let email = {email:"example@via.dk"}
+let email = { email: "example@via.dk" };
 
 module.exports = [
-    {
+  {
     id: "get-email", // id of the route
     url: "/email", // url in path-to-regexp format
     method: "GET", // HTTP method
@@ -11,27 +11,27 @@ module.exports = [
         type: "json", // variant type
         options: {
           status: 200,
-          body: email
-        }
+          body: email,
+        },
       },
-    ]
-    },
-    {
-        id: "change-email", // route id
-        url: "/email", // url in express format
-        method: "POST", // HTTP method
-        variants: [
-          {
-            id: "success",
-            type: "middleware", // variant of type "middleware"
-            options: {
-              middleware: (req, res) => {
-                    email.email = req.body.email
-                    res.status(201)
-                    res.send(email)
-              },
-            },
-          }
-        ],
+    ],
+  },
+  {
+    id: "change-email", // route id
+    url: "/email", // url in express format
+    method: "POST", // HTTP method
+    variants: [
+      {
+        id: "success",
+        type: "middleware", // variant of type "middleware"
+        options: {
+          middleware: (req, res) => {
+            email.email = req.body.email;
+            res.status(201);
+            res.send(email);
+          },
+        },
       },
-]
+    ],
+  },
+];
